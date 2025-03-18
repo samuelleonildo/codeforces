@@ -27,6 +27,8 @@ private:
                 if (_node->left == nullptr) { _node->left = insertHelper(_node->left, _parent, _value); }
                 else if (_node->right == nullptr) { _node->right =insertHelper(_node->right, _parent, _value); }
 
+                _node->subtree_size++;
+
                 this->size++;
             }
             else
@@ -58,7 +60,8 @@ private:
         {
             std::cout << _node->value << ": ";
             std::cout << (_node->left != nullptr ? _node->left->value : -1) << ' ';
-            std::cout << (_node->right != nullptr ? _node->right->value : -1) << '\n';
+            std::cout << (_node->right != nullptr ? _node->right->value : -1) << ", ";
+            std::cout << "size: " << _node->subtree_size << '\n';
 
             printHelper(_node->left);
             printHelper(_node->right);
@@ -122,7 +125,7 @@ int main(void)
             binaryTree.insert(parent, value);
         }
         
-        binaryTree.print();
+        // binaryTree.print();
         std::cout << binaryTree.getSize() << '\n';
     }
     
